@@ -16,13 +16,13 @@ def Tabla_accidentes_var(var,df,mortal):
     if mortal == 0:
         df_cnt = df.loc[df.severidad == 0].groupby([var])[var].count()
         v_aux = pd.DataFrame(df_cnt)
-        v_aux = v_aux.set_axis(['Num_accidentes_mortales'], axis=1, inplace=False)
+        v_aux = v_aux.set_axis(['Num_accidentes_mortales'], axis=1)
         v_aux = v_aux.reset_index(level=0)
         v_aux['Porcentaje_accidentes_mortales'] = v_aux['Num_accidentes_mortales']/sum(v_aux['Num_accidentes_mortales'])*100
     else:
         df_cnt = df.groupby([var])[var].count()
         v_aux = pd.DataFrame(df_cnt)
-        v_aux = v_aux.set_axis(['Num_accidentes_totales'], axis=1, inplace=False)
+        v_aux = v_aux.set_axis(['Num_accidentes_totales'], axis=1)
         v_aux = v_aux.reset_index(level=0)
         v_aux['Porcentaje_accidentes_totales'] = v_aux['Num_accidentes_totales']/sum(v_aux['Num_accidentes_totales'])*100
 
